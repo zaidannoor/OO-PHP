@@ -66,4 +66,5 @@ $info->tambah($produk1);
 $info->tambah($produk2);
 
 echo $info->cetak();
+echo(Halo);
 
