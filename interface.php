@@ -1,8 +1,15 @@
 <?php 
 	
-	// Kelas abstak yaitu kelas yang tidak bisa di instansiasi
-	// kelas abstrak harus mempunnyai setidaknya 1 method abstrak
-	abstract class Produk {
+	// Kelas interface yaitu seperti kelas abstrak tetapi
+	// kelas interface tidak boleh memiliki property, hanya boleh method
+	// kelas interface hanyalah sebuah template untuk kelas yang mengimplementasikannya
+
+	interface label{
+		public function getLabel();
+	}
+
+
+	class Produk {
 	protected 	$nama,
 			$produsen,
 			$jenis,
@@ -14,9 +21,7 @@
 		$this->jenis = $jenis;
 		$this->harga = $harga;
 	}
-
-	abstract public function getLabel();
-		
+	
 	public function getProduk(){
 		return "$this->nama, 
 				$this->produsen, 
@@ -26,7 +31,7 @@
 
 }
 
-class Televisi extends Produk{
+class Televisi extends Produk implements label{
 	// penggunaan overiding
 	public function getLabel(){
 		return $this->getProduk();
@@ -34,7 +39,7 @@ class Televisi extends Produk{
 
 }
 
-class Lampu extends Produk{
+class Lampu extends Produk implements label{
 	// penggunaan overiding
 	public function getLabel(){
 		return $this->getProduk();
@@ -59,6 +64,13 @@ class getInfoProduk{
 		return $str;
 	}
 }
+
+
+
+
+
+
+
 
 $produk1 = new lampu('Lampu Neon','LG','Lampu',300000);
 $produk2 = new Televisi('TV LED' , 'LG' , 'TV' , 500000);
